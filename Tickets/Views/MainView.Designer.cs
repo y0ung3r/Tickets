@@ -56,6 +56,7 @@ namespace Tickets.Views
             this.openTasksFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.tbDepartmentChief = new System.Windows.Forms.TextBox();
+            this.cbCanUseTaskWord = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ntbTicketsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntbQuestionsCount)).BeginInit();
             this.SuspendLayout();
@@ -149,7 +150,7 @@ namespace Tickets.Views
             // 
             // btExport
             // 
-            this.btExport.Location = new System.Drawing.Point(273, 595);
+            this.btExport.Location = new System.Drawing.Point(273, 612);
             this.btExport.Name = "btExport";
             this.btExport.Size = new System.Drawing.Size(107, 23);
             this.btExport.TabIndex = 10;
@@ -187,7 +188,7 @@ namespace Tickets.Views
             // btOpenTasks
             // 
             this.btOpenTasks.Enabled = false;
-            this.btOpenTasks.Location = new System.Drawing.Point(343, 537);
+            this.btOpenTasks.Location = new System.Drawing.Point(343, 554);
             this.btOpenTasks.Name = "btOpenTasks";
             this.btOpenTasks.Size = new System.Drawing.Size(37, 23);
             this.btOpenTasks.TabIndex = 16;
@@ -198,7 +199,7 @@ namespace Tickets.Views
             // tbPathToTasks
             // 
             this.tbPathToTasks.Enabled = false;
-            this.tbPathToTasks.Location = new System.Drawing.Point(12, 539);
+            this.tbPathToTasks.Location = new System.Drawing.Point(12, 556);
             this.tbPathToTasks.Name = "tbPathToTasks";
             this.tbPathToTasks.ReadOnly = true;
             this.tbPathToTasks.Size = new System.Drawing.Size(325, 20);
@@ -208,7 +209,7 @@ namespace Tickets.Views
             // 
             this.lbPathToTasks.AutoSize = true;
             this.lbPathToTasks.Enabled = false;
-            this.lbPathToTasks.Location = new System.Drawing.Point(10, 523);
+            this.lbPathToTasks.Location = new System.Drawing.Point(10, 540);
             this.lbPathToTasks.Name = "lbPathToTasks";
             this.lbPathToTasks.Size = new System.Drawing.Size(142, 13);
             this.lbPathToTasks.TabIndex = 14;
@@ -217,7 +218,8 @@ namespace Tickets.Views
             // cbCanIncludeTasks
             // 
             this.cbCanIncludeTasks.AutoSize = true;
-            this.cbCanIncludeTasks.Location = new System.Drawing.Point(13, 499);
+            this.cbCanIncludeTasks.Enabled = false;
+            this.cbCanIncludeTasks.Location = new System.Drawing.Point(13, 516);
             this.cbCanIncludeTasks.Name = "cbCanIncludeTasks";
             this.cbCanIncludeTasks.Size = new System.Drawing.Size(162, 17);
             this.cbCanIncludeTasks.TabIndex = 17;
@@ -228,7 +230,7 @@ namespace Tickets.Views
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 581);
+            this.label7.Location = new System.Drawing.Point(10, 598);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 13);
             this.label7.TabIndex = 19;
@@ -236,7 +238,7 @@ namespace Tickets.Views
             // 
             // ntbTicketsCount
             // 
-            this.ntbTicketsCount.Location = new System.Drawing.Point(12, 597);
+            this.ntbTicketsCount.Location = new System.Drawing.Point(12, 614);
             this.ntbTicketsCount.Minimum = new decimal(new int[] {
             1,
             0,
@@ -317,11 +319,23 @@ namespace Tickets.Views
             this.tbDepartmentChief.TabIndex = 23;
             this.tbDepartmentChief.Text = "Хасанов М.К.";
             // 
+            // cbCanUseTaskWord
+            // 
+            this.cbCanUseTaskWord.AutoSize = true;
+            this.cbCanUseTaskWord.Location = new System.Drawing.Point(13, 493);
+            this.cbCanUseTaskWord.Name = "cbCanUseTaskWord";
+            this.cbCanUseTaskWord.Size = new System.Drawing.Size(157, 17);
+            this.cbCanUseTaskWord.TabIndex = 25;
+            this.cbCanUseTaskWord.Text = "Включать слово \"Задача\"";
+            this.cbCanUseTaskWord.UseVisualStyleBackColor = true;
+            this.cbCanUseTaskWord.CheckedChanged += new System.EventHandler(this.OnCanUseTaskWordCheckBoxValueChanged);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 638);
+            this.ClientSize = new System.Drawing.Size(394, 651);
+            this.Controls.Add(this.cbCanUseTaskWord);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbDepartmentChief);
             this.Controls.Add(this.ntbQuestionsCount);
@@ -387,6 +401,7 @@ namespace Tickets.Views
         private System.Windows.Forms.OpenFileDialog openTasksFileDialog;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbDepartmentChief;
+        private System.Windows.Forms.CheckBox cbCanUseTaskWord;
     }
 }
 

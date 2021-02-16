@@ -16,6 +16,8 @@
 
         public int QuestionsCount { get; set; }
 
+        public bool CanUseTaskWord { get; set; }
+
         public bool CanIncludeTasks { get; set; }
 
         public int TicketsCount { get; set; }

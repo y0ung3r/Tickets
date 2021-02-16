@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Tickets.Interfaces;
 using Tickets.Models;
@@ -24,6 +25,16 @@ namespace Tickets.Views
             lbPathToTasks.Enabled = cbCanIncludeTasks.Checked;
             tbPathToTasks.Enabled = cbCanIncludeTasks.Checked;
             btOpenTasks.Enabled = cbCanIncludeTasks.Checked;
+        }
+
+        private void OnCanUseTaskWordCheckBoxValueChanged(object sender, EventArgs eventArgs)
+        {
+            cbCanIncludeTasks.Enabled = cbCanUseTaskWord.Checked;
+
+            if (cbCanIncludeTasks.Checked && !cbCanUseTaskWord.Checked)
+            {
+                cbCanIncludeTasks.Checked = false;
+            }
         }
 
         private void OnFileDialogOpen(object sender, EventArgs eventArgs)
@@ -68,6 +79,7 @@ namespace Tickets.Views
                     StudyYear = tbStudyYear.Text,
                     DepartmentChief = tbDepartmentChief.Text,
                     QuestionsCount = Convert.ToInt32(ntbQuestionsCount.Value),
+                    CanUseTaskWord = cbCanUseTaskWord.Checked,
                     CanIncludeTasks = cbCanIncludeTasks.Checked,
                     TicketsCount = Convert.ToInt32(ntbTicketsCount.Value),
                     DestinationFilepath = saveFileDialog.FileName,
@@ -78,6 +90,7 @@ namespace Tickets.Views
                 try
                 {
                     ticketService.CreateTickets(ticketsSettings);
+                    Process.Start(ticketsSettings.DestinationFilepath);
                 }
 
                 catch (Exception error)

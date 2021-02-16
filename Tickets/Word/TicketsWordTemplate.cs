@@ -126,17 +126,26 @@ namespace Tickets.Word
                     questionContentParagraph.ListFormat.ApplyStyle(listStyle.Name);
                 }
 
-                if (ticketsSettings.CanIncludeTasks)
+                if (ticketsSettings.CanUseTaskWord)
                 {
-                    var task = GetRandomTask();
-                    var taskConditionParagraph = task.Condition.Clone() as Paragraph;
-                    row.Cells[0].Paragraphs.Add(taskConditionParagraph);
-                    taskConditionParagraph.ListFormat.ApplyStyle(listStyle.Name);
+                    var taskHeaderParagraph = row.Cells[0].AddParagraph();
+                    taskHeaderParagraph.AppendText("Задача.");
+                    taskHeaderParagraph.ListFormat.ApplyStyle(listStyle.Name);
 
-                    foreach (var picture in task.Pictures)
+                    if (ticketsSettings.CanIncludeTasks)
                     {
-                        var pictureParagraph = picture.Clone() as Paragraph;
-                        row.Cells[0].Paragraphs.Add(pictureParagraph);
+                        var task = GetRandomTask();
+
+                        var taskConditionParagraph = task.Condition.Clone() as Paragraph;
+                        row.Cells[0].Paragraphs.Add(taskConditionParagraph);
+
+                        taskConditionParagraph.Format.LeftIndent = 53.5f;
+
+                        foreach (var picture in task.Pictures)
+                        {
+                            var pictureParagraph = picture.Clone() as Paragraph;
+                            row.Cells[0].Paragraphs.Add(pictureParagraph);
+                        }
                     }
                 }
 

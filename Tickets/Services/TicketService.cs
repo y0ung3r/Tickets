@@ -75,9 +75,10 @@ namespace Tickets.Services
 
             var questions = GetQuestions(ticketsSettings.PathToQuestions);
 
-            if (questions.Count / ticketsSettings.QuestionsCount > ticketsSettings.TicketsCount)
+            if (questions.Count / ticketsSettings.QuestionsCount > ticketsSettings.TicketsCount || 
+                (questions.Count < ticketsSettings.TicketsCount && ticketsSettings.QuestionsCount.Equals(1)))
             {
-                throw new InvalidOperationException("Невозможно сформировать заданное количество экзаменационных билетов используя указанный список вопросов");
+                throw new InvalidOperationException("Невозможно сформировать заданное количество экзаменационных билетов, используя указанный список вопросов.");
             }
 
             var tasks = new List<Task>() as ICollection<Task>;
@@ -86,7 +87,7 @@ namespace Tickets.Services
             {
                 if (string.IsNullOrWhiteSpace(ticketsSettings.PathToTasks))
                 {
-                    throw new InvalidOperationException("Не указан путь до файла с задачами\nЭто обязательно, если активирован режим \"Включать задачи в билеты\"");
+                    throw new InvalidOperationException("Не указан путь до файла с задачами.\nЭто обязательно, если активирован режим \"Включать задачи в билеты\".");
                 }
                 else
                 {
